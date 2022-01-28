@@ -37,7 +37,26 @@ if __name__ == '__main__':
         #         cursor.execute(sql_comando, ('Pedro', 'Wegner', 'pedrowegner', '41 99672-2273'))
         #         conexao.commit()
 
+
+
+
+        # atualiza contato no banco
+        # with conecta() as conexao:
+        #     with conexao.cursor() as cursor:
+        #         sql_comando = 'UPDATE contato SET nome_contato=%s WHERE id_contato=%s'
+        #         cursor.execute(sql_comando, ('Pedro', 1))
+        #         conexao.commit()
+
         # le contato no banco
+
+
+        # exclui contato no banco
+        with conecta() as conexao:
+            with conexao.cursor() as cursor:
+                sql_comando = 'DELETE FROM contato WHERE id_contato=%s'
+                cursor.execute(sql_comando, (2,))
+                conexao.commit()
+
         with conecta() as conexao:
             with conexao.cursor() as cursor:
                 sql_comando = 'SELECT * FROM contato'
@@ -46,21 +65,6 @@ if __name__ == '__main__':
 
                 for linha in select:
                     print(linha)
-
-        #
-        # # atualiza contato no banco
-        # with conecta() as conexao:
-        #     with conexao.cursor() as cursor:
-        #         sql_comando = ''
-        #         cursor.execute(sql_comando)
-        #         conexao.commit()
-        #
-        # # exclui contato no banco
-        # with conecta() as conexao:
-        #     with conexao.cursor() as cursor:
-        #         sql_comando = ''
-        #         cursor.execute(sql_comando)
-        #         conexao.commit()
 
     except Exception as e:
         print(f'{e}')
